@@ -1,41 +1,65 @@
-<!-- Please do not change this logo with link -->
 [![MCHP](images/microchip.png)](https://www.microchip.com)
 
-# Update the title for avr128db48-getting-started-with-xoschf-mplab here
+# Getting Started with External High-Frequency Oscillator on AVR DB
 
-<!-- This is where the introduction to the example goes, including mentioning the peripherals used -->
+The High Frequency Crystal Oscillator (XOSCHF) enables the use of an external crystal or an external clock signal up to 32MHz. This can be used as a clock source for the Main Clock (CLK_MAIN), the Real-Time Counter (RTC) and the 12-Bit Timer/Counter Type D (TCDn).
+
+The Clock Failure Detection (CFD) feature can be used to detect if the output from a clock source stops and can switch the Main Clock to a different clock source to continue operation or shut down operation safely.
+
+These examples show the following use cases for XOSCHF and CFD on the AVR DB family of microcontrollers:
+
+* **XOSCHF with External Crystal**:
+  Initialize XOSCHF for external crystal and change the main clock source to XOSCHF
+* **XOSCHF with External Clock**:
+  Initialize XOSCHF for external clock signal and change the main clock source to XOSCHF
+* **RTC with XOSCHF**:
+  Use XOSCHF as clock source for the RTC
+* **TCD with XOSCHF**:
+  Use XOSCHF as clock source for TCD0
+* **TCD with XOSCHF and PLL**:
+  Initialize the PLL with XOSCHF as clock source and use the PLL as clock source for TCD0
+* **CFD on XOSCHF**:
+  Initialize the CFD to monitor XOSCHF, enable the interrupt, toggle an LED if the clock source fails
+* **CFD on Main Clock with NMI**:
+  Initialize the CFD to monitor Main Clock with XOSCHF as clock source, enable the interrupt as a Non-Maskable Interrupt (NMI), toggle an LED with frequency derived from Main Clock
 
 ## Related Documentation
 
-<!-- Any information about an application note or tech brief can be linked here. Use unbreakable links!
-     In addition a link to the device family landing page and relevant peripheral pages as well:
-     - [AN3381 - Brushless DC Fan Speed Control Using Temperature Input and Tachometer Feedback](https://microchip.com/00003381/)
-     - [PIC18F-Q10 Family Product Page](https://www.microchip.com/design-centers/8-bit/pic-mcus/device-selection/pic18f-q10-product-family) -->
+* [TB3272 - Getting Started with External High-Frequency Oscillator on AVR DB](https://microchip.com/DS90003272)
+* [AVR128DB48 Device Page](https://www.microchip.com/wwwproducts/en/AVR128DB48)
+* AVR128DB48 Curiosity Nano User Guide (link will be added once available)
 
 ## Software Used
 
-<!-- All software used in this example must be listed here. Use unbreakable links!
-     - MPLAB® X IDE 5.30 or newer [(microchip.com/mplab/mplab-x-ide)](http://www.microchip.com/mplab/mplab-x-ide)
-     - MPLAB® XC8 2.10 or a newer compiler [(microchip.com/mplab/compilers)](http://www.microchip.com/mplab/compilers)
-     - MPLAB® Code Configurator (MCC) 3.95.0 or newer [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
-     - MPLAB® Code Configurator (MCC) Device Libraries PIC10 / PIC12 / PIC16 / PIC18 MCUs [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
-     - Microchip PIC18F-Q Series Device Support (1.4.109) or newer [(packs.download.microchip.com/)](https://packs.download.microchip.com/) -->
+* [MPLAB® X IDE](https://www.microchip.com/mplab/mplab-x-ide) 5.40 or later
+* [MPLAB® XC8](https://www.microchip.com/mplab/compilers) 2.20 or later
+* MPLAB® X AVR-Dx_DFP version 1.4.75 or later
+* For the Atmel Studio version of these projects, please go to [this repository](https://github.com/microchip-pic-avr-examples/avr128db48-getting-started-with-xoschf)
+
 
 ## Hardware Used
 
-<!-- All hardware used in this example must be listed here. Use unbreakable links!
-     - PIC18F47Q10 Curiosity Nano [(DM182029)](https://www.microchip.com/Developmenttools/ProductDetails/DM182029)
-     - Curiosity Nano Base for Click boards™ [(AC164162)](https://www.microchip.com/Developmenttools/ProductDetails/AC164162)
-     - POT Click board™ [(MIKROE-3402)](https://www.mikroe.com/pot-click) -->
+* [AVR128DB48 Curiosity Nano](https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/EV35L43A)
+* Optional external clock source
 
 ## Setup
 
-<!-- Explain how to connect hardware and set up software. Depending on complexity, step-by-step instructions and/or tables and/or images can be used -->
+The AVR128DB48 Curiosity Nano comes with a 16 MHz crystal soldered on. This can be used for most of the example projects, except for the external clock and RTC examples.
+
+* **XOSCHF with External Clock**:
+  * Disconnect the crystal by cutting the two straps on the top side of the board next to the crystal (J215, J216)
+  * Connect the I/O lines to the edge connector by placing solder blobs on the circular solder points marked PA0 and PA1 on the bottom side of the board (J213, J214)
+  * Connect a clock source to PA0 on the edge connector
+* **RTC with XOSCHF**:
+  Replace the 16 MHz crystal with one running at maximum 1/4 of the CLK_MAIN frequency
 
 ## Operation
 
-<!-- Explain how to operate the example. Depending on complexity, step-by-step instructions and/or tables and/or images can be used -->
+* Connect the AVR128DB48 Curiosity Nano to a computer using a USB cable
+* Clone the repository or download the zip to get the source code
+* Open the project folder you want to run with MPLAB X
+* Compile and run the code
 
-## Summary
+## Conclusion
 
-<!-- Summarize what the example has shown -->
+After going through these examples you should have a better understanding of how to set up different use cases for the XOSCHF on AVR DB family microcontrollers.
