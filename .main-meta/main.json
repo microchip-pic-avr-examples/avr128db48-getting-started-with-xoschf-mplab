@@ -52,7 +52,7 @@
             ]
         ],
         "peripherals": [
-            "CLKCTRL", "RTC", "TCD"
+            "CLKCTRL", "RTC", "TCD" 
         ],
         "keywords": [
             "Crystal",
